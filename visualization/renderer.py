@@ -15,7 +15,7 @@ def _draw_intersection(ax, queue_a, queue_b, green, yellow, step):
     ax.set_ylim(-10, 10)
     ax.set_aspect("equal")
     ax.set_facecolor("#2d2d2d")
-    ax.set_title(f"Step {step}", color="white", fontsize=14)
+    ax.set_title(f"Step {step}", color="black", fontsize=14)
 
     # Roads
     ax.add_patch(patches.Rectangle((-2, -10), 4, 20, fc="#555555"))  # vertical
@@ -78,7 +78,7 @@ def render_intersection(queue_a, queue_b, green, yellow, step):
         _fig, _ax = plt.subplots(1, 1, figsize=(8, 8))
     _draw_intersection(_ax, queue_a, queue_b, green, yellow, step)
     _fig.canvas.draw()
-    plt.pause(0.05)
+    plt.pause(0.3)
 
 
 def render_intersection_rgb(queue_a, queue_b, green, yellow, step) -> np.ndarray:

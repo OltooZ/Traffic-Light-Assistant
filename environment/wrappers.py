@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import supersuit as ss
+from stable_baselines3.common.vec_env import VecMonitor
 
 from config import EnvConfig
 from environment.traffic_env import TrafficLightEnv
@@ -29,5 +30,7 @@ def make_sb3_env(
     inner = env.venv if hasattr(env, "venv") else env
     if not hasattr(inner, "seed"):
         inner.seed = lambda seed=None: [seed] * env.num_envs
+
+    env = VecMonitor(env)
 
     return env

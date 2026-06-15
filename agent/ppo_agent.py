@@ -27,14 +27,14 @@ class RedisMetricsCallback(BaseCallback):
 
             self.redis_manager.push_metrics({
                 "timestep": self.num_timesteps,
-                "avg_reward": round(avg_reward, 2),
-                "avg_length": round(avg_length, 2),
+                "avg_reward": round(float(avg_reward), 2),
+                "avg_length": round(float(avg_length), 2),
             })
 
             if self.redis_manager.is_connected():
                 self.redis_manager.set_env_state({
                     "timestep": self.num_timesteps,
-                    "avg_reward": round(avg_reward, 2),
+                    "avg_reward": round(float(avg_reward), 2),
                 })
         return True
 
